@@ -50,7 +50,7 @@ case class ShowTableColumnsCommand(tableID: DeltaTableIdentifier)
       if (snapshot.version < 0) {
         throw DeltaErrors.notADeltaTableException("SHOW COLUMNS")
       } else {
-        snapshot.schema.fieldNames.map { x => Row(x) }.toSeq
+        snapshot.schema.fieldNames.map { x => Row(x.concat("COLUMN")) }.toSeq
       }
     }
   }
